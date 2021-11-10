@@ -2,6 +2,7 @@ package pl.wipb.ztp.chess;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.geom.AffineTransform;
 import java.io.IOException;
 
 class Piece {

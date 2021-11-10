@@ -11,7 +11,7 @@ class Baza extends AbstractListModel<Data>{
 
     public void add(Data tab){
     	ar.add(tab);
-        fireIntervalAdded(ar,ar.size()-1,ar.size()-1);
+        fireIntervalAdded(ar,ar.size(),ar.size());
     }
 
     public void remove(int idx){

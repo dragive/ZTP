@@ -27,5 +27,5 @@ class RealData implements Data {
 	public int size() {
 		return data.size();
 	}
-    /* ... */
+
 }

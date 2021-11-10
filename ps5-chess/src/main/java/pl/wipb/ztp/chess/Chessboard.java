@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.geom.AffineTransform;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -51,6 +52,7 @@ public class Chessboard extends JPanel {
 		super.paintComponent(g);
 		g.drawImage(image, 0, 0, null);
 		Graphics2D g2d = (Graphics2D) g;
+		g2d.
 		for (Map.Entry<Point, Piece> e : board.entrySet()) {
 			Point pt = e.getKey();
 			Piece pc = e.getValue();

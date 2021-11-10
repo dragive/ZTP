@@ -22,6 +22,7 @@ public class PS4 {
         }
 
         final Baza baza = new Baza();
+        TableModelAdapter tableModelAdapter = new TableModelAdapter(new RealData(0));
 
         final JFrame frame = new JFrame("Zadanie 4");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,7 +34,7 @@ public class PS4 {
         scrollPane.setBorder(BorderFactory.createTitledBorder(" Tablice: "));
         splitPane.setLeftComponent(scrollPane);
 
-        JTable table = new JTable(/* ... tutaj dodaj adapter: TableModel ... */);
+        JTable table = new JTable(tableModelAdapter);
         scrollPane = new JScrollPane(table);
         scrollPane.setBorder(BorderFactory.createTitledBorder(" Zawartość: "));
         splitPane.setRightComponent(scrollPane);
@@ -64,8 +65,7 @@ public class PS4 {
                     int size = Integer.parseInt(value);
                     baza.add(new RealData(size));
                 } catch(Exception ex) {
-                	//FIXME add exception handling!
-                	 /* ... */
+                    JOptionPane.showMessageDialog(frame,"Błąd formatu danych!");
                 };
             }
         });
@@ -75,9 +75,8 @@ public class PS4 {
                 int idx = list.getSelectedIndex();
                 try{
                     baza.remove(idx);
-                } catch(Exception ex) { 
-                	//FIXME add exception handling!
-                	/* ... */
+                } catch(Exception ex) {
+                    JOptionPane.showMessageDialog(frame,"Wybierz poprawną tablice, która ma zostać usunięta!");
                 };
             }
         });
@@ -87,7 +86,7 @@ public class PS4 {
             public void valueChanged(ListSelectionEvent e) {
                 int idx = list.getSelectedIndex();
                 if (idx >= 0) {
-                    /* ... */
+                    tableModelAdapter.setContent(list.getSelectedValue());
                 }
             }
         });
