@@ -44,8 +44,10 @@ public class PS4 {
         JMenuBar bar = new JMenuBar();
         JButton add = new JButton("Dodaj tablicę");
         JButton del = new JButton("Usuń tablicę");
+        JButton clone = new JButton("Skopiuj tablicę");
         bar.add(add);
         bar.add(del);
+        bar.add(clone);
 
         frame.setJMenuBar(bar);
 
@@ -88,6 +90,17 @@ public class PS4 {
                 if (idx >= 0) {
                     tableModelAdapter.setContent(list.getSelectedValue());
                 }
+            }
+        });
+
+        clone.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    baza.add(new DataCopy(list.getSelectedValue()));
+                } catch(Exception ex) {
+                    JOptionPane.showMessageDialog(frame,"Wybierz tablice, którą chcesz skopiować");
+                };
             }
         });
     }
