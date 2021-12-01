@@ -26,7 +26,7 @@ class Piece {
 	}
 
 	public void draw(Graphics2D g) {
-		g.drawImage(image, x, y, x + TILESIZE, y + TILESIZE, index * TILESIZE, 0, (index + 1) * TILESIZE, TILESIZE,
+		g.drawImage(image, x, y, x + 1, y + 1, index * TILESIZE, 0, (index + 1) * TILESIZE, TILESIZE,
 				null);
 	}
 

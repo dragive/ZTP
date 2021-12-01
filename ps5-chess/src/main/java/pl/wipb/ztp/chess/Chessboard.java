@@ -1,5 +1,7 @@
 package pl.wipb.ztp.chess;
 
+//import sun.awt.geom.AreaOp;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -52,7 +54,10 @@ public class Chessboard extends JPanel {
 		super.paintComponent(g);
 		g.drawImage(image, 0, 0, null);
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.
+		AffineTransform tr=new AffineTransform();
+		tr.translate(ZEROX,ZEROY);
+		tr.scale(32,32);
+		g2d.setTransform(tr);
 		for (Map.Entry<Point, Piece> e : board.entrySet()) {
 			Point pt = e.getKey();
 			Piece pc = e.getValue();
@@ -88,17 +93,27 @@ public class Chessboard extends JPanel {
 			public void mousePressed(MouseEvent ev) {
 				dragged = take((ev.getX() - ZEROX) / Piece.TILESIZE, (ev.getY() - ZEROY) / Piece.TILESIZE);
 				mouse = ev.getPoint();
+//				System.out.println(mouse+"mouse");
+//				System.out.println(dragged+"dragged");
 			}
 
 			public void mouseReleased(MouseEvent ev) {
+				if(dragged!=null){
 				drop(dragged, (ev.getX() - ZEROX) / Piece.TILESIZE, (ev.getY() - ZEROY) / Piece.TILESIZE);
 				dragged = null;
 				undo.setEnabled(true);
-			}
+				System.out.println(ev);
+//				System.out.println(mouse+"mouse");
+//				System.out.println(dragged+"dragged");
+			}}
 		});
 		this.addMouseMotionListener(new MouseMotionAdapter() {
 			public void mouseDragged(MouseEvent ev) {
 				mouse = ev.getPoint();
+				System.out.println(mouse+"mouseDragged");
+				System.out.println((mouse.x-ZEROX)/Piece.TILESIZE+"(mouse.x-ZEROX)/Piece.TILESIZE");
+
+				drop(dragged,(mouse.x-ZEROX)/Piece.TILESIZE,(mouse.y-ZEROY)/Piece.TILESIZE);
 				repaint();
 			}
 		});
