@@ -10,7 +10,10 @@ class Mucha {
 	double x, y; // pozycja muchy
 	double vx, vy; // predkosc muchy
 
+	private MuchaBaseStrategy muchaStrategy;
+
 	public Mucha() {
+		muchaStrategy = new MuchaRandomStrategy(this);
 		x = Math.random();
 		y = Math.random();
 		vx = k * (Math.random() - Math.random());
@@ -26,11 +29,6 @@ class Mucha {
 	}
 	
 	public void move() {
-		x += vx;
-		y += vy;
-		if(x<0) { x = -x; vx = -vx; }
-		if(x>1) { x = 2-x;vx = -vx; }
-		if(y<0) { y = -y; vy = -vy; }
-		if(y>1) { y = 2-y;vy = -vy; }
+		muchaStrategy.move();
 	}
 }
