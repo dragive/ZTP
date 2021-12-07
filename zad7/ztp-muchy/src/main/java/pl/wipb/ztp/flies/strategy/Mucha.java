@@ -13,7 +13,7 @@ class Mucha {
 	private MuchaBaseStrategy muchaStrategy;
 
 	public Mucha() {
-		muchaStrategy = new MuchaRandomStrategy(this);
+		muchaStrategy = new MuchaCircleStrategy(this);
 		x = Math.random();
 		y = Math.random();
 		vx = k * (Math.random() - Math.random());

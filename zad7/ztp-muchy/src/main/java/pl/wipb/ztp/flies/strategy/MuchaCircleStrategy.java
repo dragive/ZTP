@@ -1,14 +1,16 @@
 package pl.wipb.ztp.flies.strategy;
 
 
-public class MuchaRandomStrategy extends MuchaBaseStrategy{
-    public MuchaRandomStrategy(Mucha mucha){
+public class MuchaCircleStrategy extends MuchaBaseStrategy{
+    public MuchaCircleStrategy(Mucha mucha){
         this.mucha = mucha;
     }
 
+    private Double angle = randomIntFromInterval(1D,30D);;
+
     private void randomizeVelocity(){
 
-        Double angle = randomIntFromInterval(-90D,90D);
+
 
         Double vx = Math.cos(Math.toRadians(angle)) * mucha.vx - Math.sin(Math.toRadians(angle)) * mucha.vy;
         Double vy = Math.sin(Math.toRadians(angle)) * mucha.vx + Math.cos(Math.toRadians(angle)) * mucha.vy;
