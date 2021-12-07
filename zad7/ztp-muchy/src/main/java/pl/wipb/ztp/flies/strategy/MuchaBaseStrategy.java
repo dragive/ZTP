@@ -1,5 +1,7 @@
 package pl.wipb.ztp.flies.strategy;
 
+import java.awt.*;
+
 public abstract class MuchaBaseStrategy {
     protected Mucha mucha;
 
@@ -12,4 +14,8 @@ public abstract class MuchaBaseStrategy {
     }
 
     protected abstract void move();
+
+    public Color getColor(){
+        return Color.black;
+    }
 }

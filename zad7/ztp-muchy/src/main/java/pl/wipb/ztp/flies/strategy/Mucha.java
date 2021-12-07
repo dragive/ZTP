@@ -13,7 +13,17 @@ class Mucha {
 	private MuchaBaseStrategy muchaStrategy;
 
 	public Mucha() {
-		muchaStrategy = new MuchaCircleStrategy(this);
+		int min=0,max=3;
+		int index = (int) ((Math.random() * (max - min)) + min);
+
+		if(index==0)
+			muchaStrategy = new MuchaCircleStrategy(this);
+		else if(index==1)
+			muchaStrategy = new MuchaRandomStrategy(this);
+		else{
+			muchaStrategy = new MuchaStreightStrategy(this);
+		}
+
 		x = Math.random();
 		y = Math.random();
 		vx = k * (Math.random() - Math.random());
@@ -21,7 +31,7 @@ class Mucha {
 	}
 
 	public void draw(Graphics g) {
-		g.setColor(Color.black);
+		g.setColor(muchaStrategy.getColor());
 		Rectangle rc = g.getClipBounds();
 		int a = (int)(x*rc.getWidth()),
 			b = (int)(y*rc.getHeight());

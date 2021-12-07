@@ -1,6 +1,8 @@
 package pl.wipb.ztp.flies.strategy;
 
 
+import java.awt.*;
+
 public class MuchaRandomStrategy extends MuchaBaseStrategy{
     public MuchaRandomStrategy(Mucha mucha){
         this.mucha = mucha;
@@ -30,5 +32,9 @@ public class MuchaRandomStrategy extends MuchaBaseStrategy{
         if(mucha.x>1) { mucha.x = 2-mucha.x;mucha.vx = -mucha.vx; }
         if(mucha.y<0) { mucha.y = -mucha.y; mucha.vy = -mucha.vy; }
         if(mucha.y>1) { mucha.y = 2-mucha.y;mucha.vy = -mucha.vy; }
+    }
+
+    public Color getColor(){
+        return Color.pink;
     }
 }
